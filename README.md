@@ -67,11 +67,6 @@ Generate the scientific plots used in the paper:
   ```bash
   python quality_indicator_evo.py
   ````
-- **Visualization**:
-Generate a GIF of the search process:
-  ```bash
-  python evaluate2.py --seed 1 --csv_file ensemble_mean_population_seed_1.csv
-  ````
 ## 🎓 Citation
 If you use this code or our findings in your research, please cite this work as follows (currently under review):
 # License
