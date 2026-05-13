@@ -23,6 +23,7 @@ import re
 import sys
 import argparse
 from pathlib import Path
+import numpy as np
 
 # Supported algorithm prefixes
 PREFIXES = ['sms_emoa', 'imia', 'cmopso', 'nsga3']
@@ -72,14 +73,15 @@ def process_prefix(prefix: str, log_dir: Path) -> dict:
         'max': max(runtimes),
         'count': len(runtimes),
         'missing': missing_data,
-        'files': sorted(files_processed)
+        'files': sorted(files_processed),
+        'std': np.array(runtimes).std()
     }
 
 
 def main():
     # --- Argument Parsing ---
     parser = argparse.ArgumentParser(description="Average runtime calculator for algorithm logs.")
-    parser.add_argument('--dir', type=str, default='.', 
+    parser.add_argument('--dir', type=str, default='resultados', 
                         help='Directory containing the .log files. Default: current directory.')
     parser.add_argument('--prefix', type=str, choices=PREFIXES, default=None,
                         help=f'Specific algorithm prefix to process. Options: {PREFIXES}.')
@@ -110,7 +112,7 @@ def main():
         print(f"    Average : {stats['avg']:.4f} min")
         print(f"    Minimum : {stats['min']:.4f} min")
         print(f"    Maximum : {stats['max']:.4f} min")
-
+        print(f"    Standard Deviation : {stats['std']:.4f} min")
         if stats['missing']:
             print(f"    ⚠ Missing runtime info in: {', '.join(stats['missing'])}")
 
