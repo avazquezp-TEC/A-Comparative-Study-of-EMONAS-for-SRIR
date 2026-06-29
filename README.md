@@ -21,7 +21,7 @@ The `main.py` script is the primary entry point for executing the NAS process. I
 **Usage example:**
 
 ```bash
-python main.py --search imia --seed 1 --pop_size 20 --n_gen 300 --verbose
+python main.py --search imia --seed 1 --pop-size 20 --n_gen 300 --verbose
 ````
 ### Key Arguments
 
