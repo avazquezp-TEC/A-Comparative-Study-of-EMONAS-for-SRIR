@@ -38,7 +38,7 @@ After running the experiments, use `quality_indicator_evo.py` to process the res
 **Usage example:**
 
 ```bash
-python quality_indicator_evo.py --base-dir ./outputs --dir_save ./results
+python quality_indicator/main.py --base-dir ./outputs --dir_save ./results
 ````
 **Features:**
 
