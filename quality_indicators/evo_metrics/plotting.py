@@ -141,18 +141,18 @@ def plot_pareto_front(algorithm, all_psnr, all_params, front_psnr, front_params,
     """
     display_name = get_display_name(algorithm)
 
-    plt.figure(figsize=(8, 5))
+    plt.figure(figsize=(14, 7))
     plt.scatter(all_psnr, all_params, color="royalblue", edgecolors="black",
                 s=50, alpha=0.7, zorder=2, label="Non-dominated per seed")
-    plt.scatter(front_psnr, front_params, color="black", marker="x", s=110,
+    plt.scatter(front_psnr, front_params, color="red", marker="x", s=110,
                 linewidths=2, zorder=3, label="Combined non-dominated front")
-    plt.title(f"Non-dominated front - {display_name}")
+    #plt.title(f"Non-dominated front - {display_name}")
     plt.xlabel("Predicted PSNR (dB)")
     plt.ylabel("Params")
     plt.legend(loc="best")
     plt.grid(True, linestyle="--", alpha=0.6, zorder=1)
     plt.tight_layout()
-
+    plt.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
     _save_or_show(save_path, f"pareto_front_{algorithm.lower()}.png")
 
 
@@ -181,5 +181,5 @@ def plot_all_pareto_fronts(fronts: dict, global_psnr, global_params, save_path=N
     plt.legend(loc="best")
     plt.grid(True, linestyle="--", alpha=0.6)
     plt.tight_layout()
-
+    plt.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
     _save_or_show(save_path, "pareto_front_all.png")
